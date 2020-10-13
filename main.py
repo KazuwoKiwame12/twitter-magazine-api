@@ -2,9 +2,9 @@ from flask import Flask
 import os
 import requests
 import json
-from dotenv import load_dotenv
-
-load_dotenv()
+# from dotenv import load_dotenv
+#
+# load_dotenv()
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
 
