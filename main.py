@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 import os
 import requests
 import json
@@ -9,6 +10,7 @@ import datetime
 # load_dotenv()
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
+CORS(app)
 
 def auth():
     return os.environ.get("BEARER_TOKEN")
