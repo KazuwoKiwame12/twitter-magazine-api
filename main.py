@@ -4,9 +4,9 @@ import requests
 import json
 import datetime
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
 
