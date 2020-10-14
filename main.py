@@ -34,7 +34,6 @@ def connect_to_endpoint(url, headers):
     if results.status_code != 200:
         raise Exception(results.status_code, results.text)
     results_json = results.json()
-    print(results_json)
     return change_to_client_format(results_json)
 
 def change_to_client_format(search_result):
@@ -42,7 +41,7 @@ def change_to_client_format(search_result):
     media = search_result["includes"]["media"]
 
     tweets_for_client = []
-    for tweet in search_result["data"]:
+    for tweet in reversed(search_result["data"]):
         tweet_for_client = {
             "author": user_name,
             "checked": False,
