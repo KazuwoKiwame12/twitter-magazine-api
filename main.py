@@ -47,7 +47,7 @@ def change_to_client_format(search_result):
             "checked": False,
             "created_at": tweet["created_at"],
             "text": tweet["text"],
-            "images": get_images_from_keys(tweet["attachments"]["media_keys"], media)
+            "imageList": get_images_from_keys(tweet["attachments"]["media_keys"], media)
         }
         tweets_for_client.append(tweet_for_client)
     return tweets_for_client
