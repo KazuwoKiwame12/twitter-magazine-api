@@ -40,10 +40,12 @@ def connect_to_endpoint(url, headers):
     if results.status_code != 200:
         raise Exception(results.status_code, results.text)
     results_json = results.json()
-
+    next_token = results_json["meta"].get("next_token")
+    if next_token is None:
+        next_token = ''
     return {
         "tweets": change_to_client_format(results_json),
-        "next_token": results_json["meta"]["next_token"]
+        "next_token": next_token
     }
 
 def change_to_client_format(search_result):
