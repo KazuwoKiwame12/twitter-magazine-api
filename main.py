@@ -75,11 +75,19 @@ def get_images_from_keys(media_keys, media):
 @app.route('/search/tweets/<string:user_name>/<string:next_token>')
 def search(user_name, next_token):
     bearer_token = auth()
-    url = create_url(user_name, next_token)
-    headers = create_headers(bearer_token)
-    json_response = connect_to_endpoint(url, headers)
-    return json.dumps(json_response, indent=4)
-
+    try:
+        url = create_url(user_name, next_token)
+        headers = create_headers(bearer_token)
+        json_response = connect_to_endpoint(url, headers)
+        return json.dumps(json_response, indent=4)
+    except:
+        return json.dumps(
+            {
+                "tweets": [],
+                "next_token": ''
+            },
+            indent=4
+        )
 
 @app.route('/')
 def hello():
