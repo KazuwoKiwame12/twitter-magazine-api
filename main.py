@@ -42,7 +42,7 @@ def connect_to_endpoint(url, headers):
     results_json = results.json()
     next_token = results_json["meta"].get("next_token")
     if next_token is None:
-        next_token = ''
+        next_token = 'null'
     return {
         "tweets": change_to_client_format(results_json),
         "next_token": next_token
@@ -84,7 +84,7 @@ def search(user_name, next_token):
         return json.dumps(
             {
                 "tweets": [],
-                "next_token": ''
+                "next_token": 'null'
             },
             indent=4
         )
